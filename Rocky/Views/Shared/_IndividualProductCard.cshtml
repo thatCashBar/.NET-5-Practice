@@ -1,6 +1,6 @@
 ﻿@model Rocky.Models.Product
 
-<div class="d-inline-flex" style="width:256px; margin: 0 4px 14px 4px">
+<div class="filter @Model.Category.Name.Replace(' ','_')" style="width:320px; margin: 16px">
     <!-- Card -->
     <div class="card bg-white rounded shadow-sm" style="border:1px solid #222">
         <div class="card-body px-3 pt-3 pb-1 row">
