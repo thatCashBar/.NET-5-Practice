@@ -5,6 +5,7 @@ using Rocky.Data;
 using Rocky.Models;
 using Rocky.Models.ViewModels;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Rocky.Controllers
 {
@@ -27,6 +28,18 @@ namespace Rocky.Controllers
                 Categories = _db.Category
             };
             return View(homeViewModel);
+        }
+
+        public IActionResult Details(int id)
+        {
+            DetailsViewModel detailsViewModel = new DetailsViewModel()
+            {
+                Product = _db.Product.Include(u => u.Category).Include(u => u.ApplicationType).FirstOrDefault(u => u.Id == id),
+                ExistsInCart = false
+            };
+
+            return View(detailsViewModel);
+
         }
 
         public IActionResult Privacy()
