@@ -39,7 +39,7 @@ namespace Rocky.Utility
                     new JObject {
                     {
                         "Email",
-                        "jaxonpetersen94@protonmail.com"
+                        "jaxonpetersen94@protonmail.com" // Email address used to dispatch emails
                     }, {
                         "Name",
                         "Jaxon"

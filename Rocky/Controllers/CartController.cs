@@ -107,7 +107,7 @@ namespace Rocky.Controllers
                 ProductUserViewModel.ApplicationUser.PhoneNumber,
                 productListSB.ToString());
 
-            await _emailSender.SendEmailAsync(WebConstants.TestEmailThatCanRecieveMailJet, subject, messageBody); //Replace TestEmail with "ProductUserViewModel.ApplicationUser.Email" ?
+            await _emailSender.SendEmailAsync(WebConstants.EmailForInquiries, subject, messageBody); //Replace TestEmail with "ProductUserViewModel.ApplicationUser.Email"
 
             return RedirectToAction(nameof(InquiryConfirmation));
         }
