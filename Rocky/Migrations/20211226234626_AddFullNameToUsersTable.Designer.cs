@@ -223,7 +223,7 @@ namespace Rocky.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Rocky.Models.ApplicationType", b =>
+            modelBuilder.Entity("Rocky_Models.ApplicationType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -239,7 +239,7 @@ namespace Rocky.Migrations
                     b.ToTable("ApplicationType");
                 });
 
-            modelBuilder.Entity("Rocky.Models.Category", b =>
+            modelBuilder.Entity("Rocky_Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -258,7 +258,7 @@ namespace Rocky.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("Rocky.Models.Product", b =>
+            modelBuilder.Entity("Rocky_Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -295,7 +295,7 @@ namespace Rocky.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("Rocky.Models.ApplicationUser", b =>
+            modelBuilder.Entity("Rocky_Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -356,15 +356,15 @@ namespace Rocky.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Rocky.Models.Product", b =>
+            modelBuilder.Entity("Rocky_Models.Product", b =>
                 {
-                    b.HasOne("Rocky.Models.ApplicationType", "ApplicationType")
+                    b.HasOne("Rocky_Models.ApplicationType", "ApplicationType")
                         .WithMany()
                         .HasForeignKey("ApplicationTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Rocky.Models.Category", "Category")
+                    b.HasOne("Rocky_Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
