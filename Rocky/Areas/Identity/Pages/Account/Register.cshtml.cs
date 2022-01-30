@@ -75,10 +75,10 @@ namespace Rocky.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
-            if (!await _roleManager.RoleExistsAsync(WebConstants.AdminRole))
+            if (!await _roleManager.RoleExistsAsync(Rocky_Utility.WebConstants.AdminRole))
             {
-                await _roleManager.CreateAsync(new IdentityRole(WebConstants.AdminRole));
-                await _roleManager.CreateAsync(new IdentityRole(WebConstants.CustomerRole));
+                await _roleManager.CreateAsync(new IdentityRole(Rocky_Utility.WebConstants.AdminRole));
+                await _roleManager.CreateAsync(new IdentityRole(Rocky_Utility.WebConstants.CustomerRole));
             }
 
             ReturnUrl = returnUrl;
@@ -95,14 +95,14 @@ namespace Rocky.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
-                    if (User.IsInRole(WebConstants.AdminRole))
+                    if (User.IsInRole(Rocky_Utility.WebConstants.AdminRole))
                     {
                         // Admin has logged in and they are trying to create a new user
-                        await _userManager.AddToRoleAsync(user, WebConstants.AdminRole);
+                        await _userManager.AddToRoleAsync(user, Rocky_Utility.WebConstants.AdminRole);
                     }
                     else
                     {
-                        await _userManager.AddToRoleAsync(user, WebConstants.CustomerRole);
+                        await _userManager.AddToRoleAsync(user, Rocky_Utility.WebConstants.CustomerRole);
                     }
 
                     _logger.LogInformation("User created a new account with password.");
@@ -124,7 +124,7 @@ namespace Rocky.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        if (!User.IsInRole(WebConstants.AdminRole))
+                        if (!User.IsInRole(Rocky_Utility.WebConstants.AdminRole))
                         {
                             await _signInManager.SignInAsync(user, isPersistent: false);
                             return LocalRedirect(returnUrl);

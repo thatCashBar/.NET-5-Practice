@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace Rocky.Controllers
 {
-    [Authorize(Roles = WebConstants.AdminRole)]
+    [Authorize(Roles = Rocky_Utility.WebConstants.AdminRole)]
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -64,7 +64,7 @@ namespace Rocky.Controllers
                 if (productViewModel.Product.Id == 0)
                 {
                     //Creating
-                    string upload = webRootPath + WebConstants.ImagePath;
+                    string upload = webRootPath + Rocky_Utility.WebConstants.ImagePath;
                     string fileName = Guid.NewGuid().ToString();
                     string extension = Path.GetExtension(files[0].FileName);
                     using (var fileStream = new FileStream(Path.Combine(upload, fileName + extension), FileMode.Create))
@@ -80,7 +80,7 @@ namespace Rocky.Controllers
                     var objFromDb = _db.Product.AsNoTracking().FirstOrDefault(u => u.Id == productViewModel.Product.Id);
                     if (files.Count > 0)
                     {
-                        string upload = webRootPath + WebConstants.ImagePath;
+                        string upload = webRootPath + Rocky_Utility.WebConstants.ImagePath;
                         string fileName = Guid.NewGuid().ToString();
                         string extension = Path.GetExtension(files[0].FileName);
 
@@ -137,7 +137,7 @@ namespace Rocky.Controllers
             var obj = _db.Product.Find(id);
             if (obj == null) return NotFound();
 
-            string upload = _webHostEnvironment.WebRootPath + WebConstants.ImagePath;
+            string upload = _webHostEnvironment.WebRootPath + Rocky_Utility.WebConstants.ImagePath;
             var oldFile = Path.Combine(upload, obj.Image);
             if (System.IO.File.Exists(oldFile)) System.IO.File.Delete(oldFile);
 

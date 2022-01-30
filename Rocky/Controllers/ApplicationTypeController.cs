@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Rocky.Controllers
 {
-    [Authorize(Roles = WebConstants.AdminRole)]
+    [Authorize(Roles = Rocky_Utility.WebConstants.AdminRole)]
     public class ApplicationTypeController : Controller
     {
         private readonly ApplicationDbContext _db;
